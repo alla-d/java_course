@@ -67,7 +67,7 @@ public class GroupCreationTests {
 
   @AfterMethod
   public void tearDown() throws Exception {
-   // wd.quit();
+    wd.quit();
   }
 
   private boolean isAlertPresent() {

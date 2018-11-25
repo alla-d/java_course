@@ -96,7 +96,7 @@ public class CreateNewContact {
 
   @AfterClass(alwaysRun = true)
   public void tearDown() throws Exception {
-   // wd.quit();
+   wd.quit();
   }
 
   private boolean isAlertPresent() {
