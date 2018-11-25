@@ -36,12 +36,13 @@ public class GroupCreationTests {
     returnToGroupPage();
   }
 
-  private void returnToGroupPage() {
-    wd.findElement(By.linkText("group page")).click();
+
+  private void initGroupCreation() {
+    wd.findElement(By.name("new")).click();
   }
 
-  private void submitGroupCreation() {
-    wd.findElement(By.name("submit")).click();
+  private void gotoGroupPage() {
+    wd.findElement(By.linkText("groups")).click();
   }
 
   private void fillGroupForm(GroupData groupData) {
@@ -56,17 +57,17 @@ public class GroupCreationTests {
     wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
   }
 
-  private void initGroupCreation() {
-    wd.findElement(By.name("new")).click();
+  private void submitGroupCreation() {
+    wd.findElement(By.name("submit")).click();
   }
 
-  private void gotoGroupPage() {
-    wd.findElement(By.linkText("groups")).click();
+  private void returnToGroupPage() {
+    wd.findElement(By.linkText("group page")).click();
   }
 
   @AfterMethod
   public void tearDown() throws Exception {
-    wd.quit();
+   // wd.quit();
   }
 
   private boolean isAlertPresent() {
