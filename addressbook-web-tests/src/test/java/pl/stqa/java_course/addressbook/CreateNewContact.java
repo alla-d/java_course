@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 public class CreateNewContact {
   FirefoxDriver wd;
 
-  @BeforeClass
+  @BeforeMethod
   public void setUp() throws Exception {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -25,7 +25,7 @@ public class CreateNewContact {
     wd.findElement(By.name("pass")).click();
     wd.findElement(By.name("pass")).clear();
     wd.findElement(By.name("pass")).sendKeys(password);
-    wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[2]")).click();
+    wd.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
   @Test
@@ -45,7 +45,6 @@ public class CreateNewContact {
     wd.findElement(By.name("firstname")).sendKeys(groupDataContact.getContactName());
     wd.findElement(By.name("middlename")).clear();
     wd.findElement(By.name("middlename")).sendKeys(groupDataContact.getMiddleName());
-    wd.findElement(By.name("lastname")).click();
     wd.findElement(By.name("lastname")).click();
     wd.findElement(By.name("lastname")).clear();
     wd.findElement(By.name("lastname")).sendKeys(groupDataContact.getLastName());
@@ -81,7 +80,6 @@ public class CreateNewContact {
     wd.findElement(By.name("bday")).click();
     wd.findElement(By.name("bmonth")).click();
     new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(groupDataContact.getBirthMonth());
-    wd.findElement(By.name("bmonth")).click();
     wd.findElement(By.name("byear")).click();
     wd.findElement(By.name("byear")).clear();
     wd.findElement(By.name("byear")).sendKeys(groupDataContact.getBirthYear());
@@ -94,7 +92,7 @@ public class CreateNewContact {
     wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]")).click();
   }
 
-  @AfterClass(alwaysRun = true)
+  @AfterMethod
   public void tearDown() throws Exception {
    wd.quit();
   }
