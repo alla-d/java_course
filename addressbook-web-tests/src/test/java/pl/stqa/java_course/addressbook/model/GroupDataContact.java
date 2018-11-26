@@ -1,4 +1,4 @@
-package pl.stqa.java_course.addressbook;
+package pl.stqa.java_course.addressbook.model;
 
 public class GroupDataContact {
   private final String contactName;
