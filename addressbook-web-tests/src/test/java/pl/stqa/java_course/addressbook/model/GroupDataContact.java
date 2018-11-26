@@ -14,11 +14,8 @@ public class GroupDataContact {
   private final String fax;
   private final String email;
   private final String address2;
-  private final String birthday;
-  private final String birthMonth;
-  private final String birthYear;
 
-  public GroupDataContact(String contactName, String middleName, String lastName, String nickname, String title, String company, String address, String homePhone, String mobilePhone, String workPhone, String fax, String email, String address2, String birthday, String birthMonth, String birthYear) {
+  public GroupDataContact(String contactName, String middleName, String lastName, String nickname, String title, String company, String address, String homePhone, String mobilePhone, String workPhone, String fax, String email, String address2) {
     this.contactName = contactName;
     this.middleName = middleName;
     this.lastName = lastName;
@@ -32,9 +29,6 @@ public class GroupDataContact {
     this.fax = fax;
     this.email = email;
     this.address2 = address2;
-    this.birthday = birthday;
-    this.birthMonth = birthMonth;
-    this.birthYear = birthYear;
   }
 
   public String getContactName() {
@@ -89,15 +83,4 @@ public class GroupDataContact {
     return address2;
   }
 
-  public String getBirthday() {
-    return birthday;
-  }
-
-  public String getBirthMonth() {
-    return birthMonth;
-  }
-
-  public String getBirthYear() {
-    return birthYear;
-  }
 }
