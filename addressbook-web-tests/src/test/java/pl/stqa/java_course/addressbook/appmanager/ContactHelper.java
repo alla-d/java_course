@@ -34,4 +34,24 @@ public class ContactHelper extends HelperBase {
   public void submitContactCreation() {
     click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]"));
   }
+
+  public void selectContact() {
+    click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='test@test.com'])[1]/following::img[2]"));
+  }
+
+  public void submitContactModification() {
+    click(By.name("update"));
+  }
+
+  public void selectContacts() {
+    click(By.id("MassCB"));
+  }
+
+  public void deleteContacts() {
+    click(By.xpath("//input[@value='Delete']"));
+  }
+
+  public void alertDelete () {
+    wd.switchTo().alert().accept();
+  }
 }
