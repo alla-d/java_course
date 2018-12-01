@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import pl.stqa.java_course.addressbook.model.GroupDataContact;
 
 public class ContactHelper extends HelperBase {
@@ -16,7 +17,7 @@ public class ContactHelper extends HelperBase {
     wd.get("http://localhost/addressbook/edit.php");
   }
 
-  public void fillContactForm(GroupDataContact groupDataContact) {
+  public void fillContactForm(GroupDataContact groupDataContact, boolean creation) {
     type(By.name("firstname"), groupDataContact.getContactName());
     type(By.name("middlename"), groupDataContact.getMiddleName());
     type(By.name("lastname"), groupDataContact.getLastName());
@@ -30,6 +31,12 @@ public class ContactHelper extends HelperBase {
     type(By.name("fax"), groupDataContact.getFax());
     type(By.name("email"), groupDataContact.getEmail());
     type(By.name("address2"), groupDataContact.getAddress2());
+
+    if (creation) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(groupDataContact.getGroup());
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
   }
 
   public void submitContactCreation() {

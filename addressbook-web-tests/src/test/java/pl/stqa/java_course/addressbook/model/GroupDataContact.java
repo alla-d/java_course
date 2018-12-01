@@ -13,9 +13,10 @@ public class GroupDataContact {
   private final String workPhone;
   private final String fax;
   private final String email;
+  private String group;
   private final String address2;
 
-  public GroupDataContact(String contactName, String middleName, String lastName, String nickname, String title, String company, String address, String homePhone, String mobilePhone, String workPhone, String fax, String email, String address2) {
+  public GroupDataContact(String contactName, String middleName, String lastName, String nickname, String title, String company, String address, String homePhone, String mobilePhone, String workPhone, String fax, String email, String address2, String group) {
     this.contactName = contactName;
     this.middleName = middleName;
     this.lastName = lastName;
@@ -28,6 +29,7 @@ public class GroupDataContact {
     this.workPhone = workPhone;
     this.fax = fax;
     this.email = email;
+    this.group = group;
     this.address2 = address2;
   }
 
@@ -83,4 +85,7 @@ public class GroupDataContact {
     return address2;
   }
 
+  public String getGroup() {
+    return group;
+  }
 }
