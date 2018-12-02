@@ -13,8 +13,8 @@ public class GroupDataContact {
   private final String workPhone;
   private final String fax;
   private final String email;
-  private String group;
   private final String address2;
+  private String group;
 
   public GroupDataContact(String contactName, String middleName, String lastName, String nickname, String title, String company, String address, String homePhone, String mobilePhone, String workPhone, String fax, String email, String address2, String group) {
     this.contactName = contactName;
@@ -29,8 +29,8 @@ public class GroupDataContact {
     this.workPhone = workPhone;
     this.fax = fax;
     this.email = email;
-    this.group = group;
     this.address2 = address2;
+    this.group = group;
   }
 
   public String getContactName() {
