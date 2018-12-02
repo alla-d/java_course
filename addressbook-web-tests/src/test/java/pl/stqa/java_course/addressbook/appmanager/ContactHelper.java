@@ -16,7 +16,7 @@ public class ContactHelper extends HelperBase {
     wd.get("http://localhost/addressbook/edit.php");
   }
 
-  public void fillContactForm(GroupDataContact groupDataContact, boolean creation) {
+  public void fillContactForm(GroupDataContact groupDataContact) {
     type(By.name("firstname"), groupDataContact.getContactName());
     type(By.name("middlename"), groupDataContact.getMiddleName());
     type(By.name("lastname"), groupDataContact.getLastName());
@@ -31,11 +31,11 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), groupDataContact.getEmail());
     type(By.name("address2"), groupDataContact.getAddress2());
 
-    if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(groupDataContact.getGroup());
-    } else {
-      Assert.assertFalse(isElementPresent(By.name("new_group")));
-    }
+//    if (creation) {
+//      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(groupDataContact.getGroup());
+//    } else {
+//      Assert.assertFalse(isElementPresent(By.name("new_group")));
+//    }
   }
 
   public void submitContactCreation() {
@@ -60,5 +60,15 @@ public class ContactHelper extends HelperBase {
 
   public void alertDelete () {
     wd.switchTo().alert().accept();
+  }
+
+  public void createContact(GroupDataContact contact) {
+  gotoNewContactPage();
+  fillContactForm(contact);
+  submitContactCreation();
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='test@test.com'])[1]/following::img[2]"));
   }
 }
