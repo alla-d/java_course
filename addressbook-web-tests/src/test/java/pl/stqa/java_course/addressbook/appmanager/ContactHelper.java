@@ -39,11 +39,15 @@ public class ContactHelper extends HelperBase {
   }
 
   public void submitContactCreation() {
-    click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]"));
+    click(By.name("submit"));
   }
 
   public void selectContact() {
-    click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='test@test.com'])[1]/following::img[2]"));
+    click(By.name("selected[]"));
+  }
+
+  public void editContact() {
+    click(By.xpath("//img[@alt='Edit']"));
   }
 
   public void submitContactModification() {
@@ -69,6 +73,6 @@ public class ContactHelper extends HelperBase {
   }
 
   public boolean isThereAContact() {
-    return isElementPresent(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='test@test.com'])[1]/following::img[2]"));
+    return isElementPresent(By.name("selected[]"));
   }
 }
