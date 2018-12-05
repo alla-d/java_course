@@ -1,5 +1,6 @@
 package pl.stqa.java_course.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.stqa.java_course.addressbook.model.GroupDataContact;
 
