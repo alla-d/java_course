@@ -1,9 +1,10 @@
 package pl.stqa.java_course.addressbook.model;
 
+import java.util.Objects;
+
 public class ContactData {
   private int id;
   private final String contactName;
-  private final String middleName;
   private final String lastName;
   private final String nickname;
   private final String title;
@@ -17,10 +18,9 @@ public class ContactData {
   private final String address2;
   private String group;
 
-  public ContactData(String contactName, String middleName, String lastName, String nickname, String title, String company, String address, String homePhone, String mobilePhone, String workPhone, String fax, String email, String address2, String group) {
+  public ContactData(String contactName, String lastName, String nickname, String title, String company, String address, String homePhone, String mobilePhone, String workPhone, String fax, String email, String address2, String group) {
     this.id = Integer.MAX_VALUE;
     this.contactName = contactName;
-    this.middleName = middleName;
     this.lastName = lastName;
     this.nickname = nickname;
     this.title = title;
@@ -35,10 +35,9 @@ public class ContactData {
     this.group = group;
   }
 
-  public ContactData(int id, String contactName, String middleName, String lastName, String nickname, String title, String company, String address, String homePhone, String mobilePhone, String workPhone, String fax, String email, String address2, String group) {
+  public ContactData(int id, String contactName, String lastName, String nickname, String title, String company, String address, String homePhone, String mobilePhone, String workPhone, String fax, String email, String address2, String group) {
     this.id = id;
     this.contactName = contactName;
-    this.middleName = middleName;
     this.lastName = lastName;
     this.nickname = nickname;
     this.title = title;
@@ -59,10 +58,6 @@ public class ContactData {
 
   public String getContactName() {
     return contactName;
-  }
-
-  public String getMiddleName() {
-    return middleName;
   }
 
   public String getLastName() {
@@ -113,12 +108,11 @@ public class ContactData {
     return group;
   }
 
-
   @Override
   public String toString() {
     return "ContactData{" +
             "id='" + id + '\'' +
-            ", firstname='" + contactName + '\'' +
+            ", contactName='" + contactName + '\'' +
             ", lastName='" + lastName + '\'' +
             '}';
   }
@@ -137,6 +131,7 @@ public class ContactData {
     int result = contactName != null ? contactName.hashCode() : 0;
     result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
     return result;
+
   }
 
 }

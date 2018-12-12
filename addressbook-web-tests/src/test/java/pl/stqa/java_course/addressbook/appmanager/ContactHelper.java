@@ -22,7 +22,6 @@ public class ContactHelper extends HelperBase {
 
   public void fillContactForm(ContactData ContactData, boolean creation) {
     type(By.name("firstname"), ContactData.getContactName());
-    type(By.name("middlename"), ContactData.getMiddleName());
     type(By.name("lastname"), ContactData.getLastName());
     type(By.name("nickname"), ContactData.getNickname());
     type(By.name("title"), ContactData.getTitle());
@@ -47,6 +46,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectContact(int index) {
+
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
@@ -91,10 +91,10 @@ public class ContactHelper extends HelperBase {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
-      String name = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
+      String contactName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
       String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      ContactData contact = new ContactData(id, name, lastName, null, null, null, null, null, null, null, null, null, null, null, null);
+      ContactData contact = new ContactData(id, contactName, lastName, null, null, null, null, null, null, null, null, null, null, null);
       contacts.add(contact);
      }
     return contacts;
