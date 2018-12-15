@@ -40,6 +40,18 @@ public class ContactHelper extends HelperBase {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
   }
+  public void create(ContactData contact, boolean creation) {
+    gotoNewContactPage();
+    fillContactForm(contact, creation);
+    submitContactCreation();
+  }
+  
+  public void delete(int index) {
+    selectContact(index);
+    deleteContacts();
+    alertDelete();
+  }
+
 
   public void submitContactCreation() {
     click(By.name("submit"));
@@ -70,11 +82,7 @@ public class ContactHelper extends HelperBase {
     wd.switchTo().alert().accept();
   }
 
-  public void createContact(ContactData contact, boolean creation) {
-    gotoNewContactPage();
-    fillContactForm(contact, creation);
-    submitContactCreation();
-  }
+
 
   public boolean isThereAContact() {
 
@@ -87,7 +95,7 @@ public class ContactHelper extends HelperBase {
   }
 
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
