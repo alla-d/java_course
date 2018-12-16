@@ -23,16 +23,9 @@ public class ContactHelper extends HelperBase {
   public void fillContactForm(ContactData ContactData, boolean creation) {
     type(By.name("firstname"), ContactData.getContactName());
     type(By.name("lastname"), ContactData.getLastName());
-    type(By.name("nickname"), ContactData.getNickname());
-    type(By.name("title"), ContactData.getTitle());
-    type(By.name("company"), ContactData.getCompany());
     type(By.name("address"), ContactData.getAddress());
-    type(By.name("home"), ContactData.getHomePhone());
     type(By.name("mobile"), ContactData.getMobilePhone());
-    type(By.name("work"), ContactData.getWorkPhone());
-    type(By.name("fax"), ContactData.getFax());
     type(By.name("email"), ContactData.getEmail());
-    type(By.name("address2"), ContactData.getAddress2());
 
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(ContactData.getGroup());
@@ -40,6 +33,7 @@ public class ContactHelper extends HelperBase {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
   }
+
   public void create(ContactData contact, boolean creation) {
     gotoNewContactPage();
     fillContactForm(contact, creation);
@@ -88,7 +82,6 @@ public class ContactHelper extends HelperBase {
   }
 
 
-
   public boolean isThereAContact() {
 
     return isElementPresent(By.name("selected[]"));
@@ -107,9 +100,9 @@ public class ContactHelper extends HelperBase {
       String contactName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
       String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      ContactData contact = new ContactData(id, contactName, lastName, null, null, null, null, null, null, null, null, null, null, null);
+      ContactData contact = new ContactData().withId(id).withContactName(contactName).withLastName(lastName);
       contacts.add(contact);
-     }
+    }
     return contacts;
   }
 }

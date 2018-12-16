@@ -3,53 +3,47 @@ package pl.stqa.java_course.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-  private int id;
-  private final String contactName;
-  private final String lastName;
-  private final String nickname;
-  private final String title;
-  private final String company;
-  private final String address;
-  private final String homePhone;
-  private final String mobilePhone;
-  private final String workPhone;
-  private final String fax;
-  private final String email;
-  private final String address2;
+  private int id = Integer.MAX_VALUE;
+  private String contactName;
+  private String lastName;
+  private String address;
+  private String mobilePhone;
+  private String email;
   private String group;
 
-  public ContactData(String contactName, String lastName, String nickname, String title, String company, String address, String homePhone, String mobilePhone, String workPhone, String fax, String email, String address2, String group) {
-    this.id = Integer.MAX_VALUE;
-    this.contactName = contactName;
-    this.lastName = lastName;
-    this.nickname = nickname;
-    this.title = title;
-    this.company = company;
-    this.address = address;
-    this.homePhone = homePhone;
-    this.mobilePhone = mobilePhone;
-    this.workPhone = workPhone;
-    this.fax = fax;
-    this.email = email;
-    this.address2 = address2;
-    this.group = group;
+  public ContactData withId(int id) {
+    this.id = id;
+    return this;
   }
 
-  public ContactData(int id, String contactName, String lastName, String nickname, String title, String company, String address, String homePhone, String mobilePhone, String workPhone, String fax, String email, String address2, String group) {
-    this.id = id;
+  public ContactData withContactName(String contactName) {
     this.contactName = contactName;
+    return this;
+  }
+
+  public ContactData withLastName(String lastName) {
     this.lastName = lastName;
-    this.nickname = nickname;
-    this.title = title;
-    this.company = company;
+    return this;
+  }
+
+  public ContactData withAddress(String address) {
     this.address = address;
-    this.homePhone = homePhone;
+    return this;
+  }
+
+  public ContactData withMobilePhone(String mobilePhone) {
     this.mobilePhone = mobilePhone;
-    this.workPhone = workPhone;
-    this.fax = fax;
+    return this;
+  }
+
+  public ContactData withEmail(String email) {
     this.email = email;
-    this.address2 = address2;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
     this.group = group;
+    return this;
   }
 
   public int getId() {
@@ -64,44 +58,16 @@ public class ContactData {
     return lastName;
   }
 
-  public String getNickname() {
-    return nickname;
-  }
-
-  public String getTitle() {
-    return title;
-  }
-
-  public String getCompany() {
-    return company;
-  }
-
   public String getAddress() {
     return address;
-  }
-
-  public String getHomePhone() {
-    return homePhone;
   }
 
   public String getMobilePhone() {
     return mobilePhone;
   }
 
-  public String getWorkPhone() {
-    return workPhone;
-  }
-
-  public String getFax() {
-    return fax;
-  }
-
   public String getEmail() {
     return email;
-  }
-
-  public String getAddress2() {
-    return address2;
   }
 
   public String getGroup() {
