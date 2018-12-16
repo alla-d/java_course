@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pl.stqa.java_course.addressbook.model.ContactData;
-
 import java.util.List;
 
 public class ContactsDeletionTest extends TestBase {

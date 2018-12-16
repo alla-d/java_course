@@ -88,16 +88,13 @@ public class ContactData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    if (contactName != null ? !contactName.equals(that.contactName) : that.contactName != null) return false;
-    return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
+    return id == that.id &&
+            Objects.equals(contactName, that.contactName) &&
+            Objects.equals(lastName, that.lastName);
   }
 
   @Override
   public int hashCode() {
-    int result = contactName != null ? contactName.hashCode() : 0;
-    result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-    return result;
-
+    return Objects.hash(id, contactName, lastName);
   }
-
 }
