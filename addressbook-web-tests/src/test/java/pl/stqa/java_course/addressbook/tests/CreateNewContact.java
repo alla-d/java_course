@@ -3,8 +3,6 @@ package pl.stqa.java_course.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.stqa.java_course.addressbook.model.ContactData;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Set;
 
 public class CreateNewContact extends TestBase{
