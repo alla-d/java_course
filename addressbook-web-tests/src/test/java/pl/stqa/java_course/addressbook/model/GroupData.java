@@ -1,20 +1,16 @@
 package pl.stqa.java_course.addressbook.model;
 
-
 import java.util.Objects;
 
-public class GroupData {
-  private int id = Integer.MAX_VALUE;;
+  public class GroupData {
+  private int id = Integer.MAX_VALUE;
   private String name;
   private String header;
   private String footer;
 
   public int getId() {
-
     return id;
   }
-
-
 
   public GroupData withId(int id) {
     this.id = id;
@@ -62,7 +58,7 @@ public class GroupData {
   }
 
   public String getName() {
-        return name;
+    return name;
   }
 
   public String getHeader() {

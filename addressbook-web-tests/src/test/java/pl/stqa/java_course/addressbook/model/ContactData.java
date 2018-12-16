@@ -1,7 +1,5 @@
 package pl.stqa.java_course.addressbook.model;
 
-import java.util.Objects;
-
 public class ContactData {
   private int id = Integer.MAX_VALUE;
   private String contactName;
@@ -88,13 +86,16 @@ public class ContactData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return id == that.id &&
-            Objects.equals(contactName, that.contactName) &&
-            Objects.equals(lastName, that.lastName);
+    if (contactName != null ? !contactName.equals(that.contactName) : that.contactName != null) return false;
+    return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
+
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, contactName, lastName);
+    int result = id;
+    result = 31 * result + (contactName != null ? contactName.hashCode() : 0);
+    result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+    return result;
   }
 }
