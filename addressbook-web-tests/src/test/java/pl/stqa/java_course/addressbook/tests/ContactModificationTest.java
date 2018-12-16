@@ -29,8 +29,7 @@ public class ContactModificationTest extends TestBase {
             "update", null, null, null,
             null, "(+11)0123456", "1234567",
             "01234568", "0123", "test@test.com", null, null);
-    app.contact().fillContactForm(contact, false);
-    app.contact().submitContactModification();
+    app.contact().modify(contact);
     app.goTo().homePage();
     List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size());
@@ -42,5 +41,7 @@ public class ContactModificationTest extends TestBase {
     after.sort(byId);
     Assert.assertEquals(before, after);
       }
+
+
 
 }

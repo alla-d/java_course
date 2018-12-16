@@ -45,13 +45,18 @@ public class ContactHelper extends HelperBase {
     fillContactForm(contact, creation);
     submitContactCreation();
   }
-  
+
   public void delete(int index) {
     selectContact(index);
     deleteContacts();
     alertDelete();
   }
 
+
+  public void modify(ContactData contact) {
+    fillContactForm(contact, false);
+    submitContactModification();
+  }
 
   public void submitContactCreation() {
     click(By.name("submit"));

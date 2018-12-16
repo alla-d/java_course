@@ -7,13 +7,13 @@ import pl.stqa.java_course.addressbook.model.GroupData;
 
 import java.util.List;
 
-public class GroupDeletionTests extends TestBase{
+public class GroupDeletionTests extends TestBase {
 
   @BeforeMethod
-  public void ensurePreconditions(){
+  public void ensurePreconditions() {
     app.goTo().groupPage();
     if (app.group().list().size() == 0) {
-      app.group().create(new GroupData("test1", "test2", null));
+      app.group().create(new GroupData().withName("test1"));
     }
   }
 
