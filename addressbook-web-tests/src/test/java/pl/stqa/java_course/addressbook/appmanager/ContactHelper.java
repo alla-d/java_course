@@ -9,7 +9,9 @@ import pl.stqa.java_course.addressbook.model.ContactData;
 import pl.stqa.java_course.addressbook.model.Contacts;
 import pl.stqa.java_course.addressbook.model.Groups;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class ContactHelper extends HelperBase {
@@ -26,7 +28,9 @@ public class ContactHelper extends HelperBase {
     type(By.name("firstname"), ContactData.getContactName());
     type(By.name("lastname"), ContactData.getLastName());
     type(By.name("address"), ContactData.getAddress());
+    type(By.name("home"), ContactData.getHomePhone());
     type(By.name("mobile"), ContactData.getMobilePhone());
+    type(By.name("work"), ContactData.getWorkPhone());
     type(By.name("email"), ContactData.getEmail());
 
     if (creation) {
@@ -65,16 +69,14 @@ public class ContactHelper extends HelperBase {
   }
 
   public void returnToHomePage() {
-    click(By.linkText("home"));
+        click(By.linkText("home"));
   }
 
   public void selectContact(int index) {
-
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void selectContactById(int id) {
-
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
@@ -84,7 +86,7 @@ public class ContactHelper extends HelperBase {
 
   public void editContactById(int id) {
 
-    wd.findElement(By.xpath("//img[@alt='Edit']")).click();
+    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
   }
 
   public void submitContactModification() {
@@ -104,7 +106,6 @@ public class ContactHelper extends HelperBase {
   }
 
   public boolean isThereAContact() {
-
     return isElementPresent(By.name("selected[]"));
   }
 
@@ -119,7 +120,6 @@ public class ContactHelper extends HelperBase {
     if (contactCache != null) {
       return new Contacts(contactCache);
     }
-
     contactCache = new Contacts();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
@@ -132,5 +132,20 @@ public class ContactHelper extends HelperBase {
     return new Contacts(contactCache);
   }
 
-
+  public ContactData infoFromEditForm(ContactData contact) {
+    selectContactById(contact.getId());
+    String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+    String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String home = wd.findElement(By.name("home")).getAttribute("value");
+    String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+    String work = wd.findElement(By.name("work")).getAttribute("value");
+    String address = wd.findElement(By.name("address")).getAttribute("value");
+    String email = wd.findElement(By.name("email")).getAttribute("value");
+    String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String email3 = wd.findElement(By.name("email3")).getAttribute("value");
+    wd.navigate().back();
+    return new ContactData().withId(contact.getId()).withContactName(firstname).withLastName(lastname)
+            .withEmail(email).withEmail2(email2).withEmail3(email3)
+            .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withAddress(address);
+  }
 }
