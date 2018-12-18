@@ -3,10 +3,8 @@ package pl.stqa.java_course.addressbook.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pl.stqa.java_course.addressbook.model.ContactData;
-
 import java.util.Arrays;
 import java.util.stream.Collectors;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -20,7 +18,7 @@ public class ContactPhoneTests extends TestBase {
       app.contact().create(new ContactData()
               .withContactName("name").withLastName("surname")
               .withAddress("address").withHomePhone("111").withWorkPhone("333").withMobilePhone("222")
-              .withEmail("uuuu@oo.pp").withGroup("[none]"), true);
+              .withEmail("aaa").withGroup("[none]"), true);
     }
     app.goTo().homePage();
   }
@@ -31,7 +29,6 @@ public class ContactPhoneTests extends TestBase {
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
     assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
-
   }
 
   private String mergePhones(ContactData contact) {
@@ -43,6 +40,5 @@ public class ContactPhoneTests extends TestBase {
 
   public static String cleaned(String phone) {
     return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
-
   }
 }
