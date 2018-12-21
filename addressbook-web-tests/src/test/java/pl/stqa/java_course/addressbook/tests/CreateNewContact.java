@@ -13,15 +13,15 @@ public class CreateNewContact extends TestBase{
 
   @Test
   public void testCreateNewContact() {
-    Set<ContactData> before = app.contact().all();
+    Contacts before = app.contact().all();
     ContactData contact = new ContactData().withContactName("name").withLastName("surname")
             .withAddress("address").withHomePhone("111").withWorkPhone("333").withMobilePhone("222").
                     withEmail("aaa").withEmail2("bbb").withEmail3("ccc").withGroup("[none]");
     app.contact().create((contact), true);
     assertThat(app.contact().count(), equalTo(before.size() + 1));
-    Set<ContactData> after = app.contact().all();
-   // assertThat(after, equalTo(before.withAdded(
-   //         contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+    Contacts after = app.contact().all();
+    assertThat(after, equalTo(before.withAdded(
+            contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
 
   }
 

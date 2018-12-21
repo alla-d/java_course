@@ -1,5 +1,9 @@
 package pl.stqa.java_course.addressbook.model;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ContactData {
   private int id = Integer.MAX_VALUE;
   private String contactName;
@@ -14,7 +18,35 @@ public class ContactData {
   private String group;
   private String allPhones;
   private String allEmails;
+  private String photo;
+  private String allDetails;
 
+
+  public String getPhoto() {
+    return photo;
+  }
+
+  public ContactData withPhoto(String photo) {
+    this.photo = photo;
+    return this;
+  }
+
+  public String getAllDetails() {
+    return allDetails;
+  }
+
+  public ContactData withAllDetails(String allDetails) {
+    this.allDetails = normalizeData(allDetails);
+    return this;
+  }
+
+  private String normalizeData(String allDetails) {
+    return allDetails
+            .replace("H: ", "")
+            .replace("M: ", "")
+            .replace("W: ", "")
+            .replaceAll("\\n+", "\n");
+  }
 
   public String getAllEmails() {
     return allEmails;
@@ -54,7 +86,7 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withHomePhone (String homePhone){
+  public ContactData withHomePhone(String homePhone) {
     this.homePhone = homePhone;
     return this;
   }
@@ -70,7 +102,7 @@ public class ContactData {
   }
 
   public ContactData withEmail(String email) {
-     this.email = email;
+    this.email = email;
     return this;
   }
 
@@ -148,6 +180,8 @@ public class ContactData {
             ", email3='" + email3 + '\'' +
             ", allPhones='" + allPhones + '\'' +
             ", allEmails='" + allEmails + '\'' +
+            ", photo='" + photo + '\'' +
+            ", allDetails='" + allDetails + '\'' +
             '}';
   }
 
@@ -169,5 +203,22 @@ public class ContactData {
     return result;
   }
 
+  public List<String> asString() {
+    return Arrays.asList(getContactName() + " " + getLastName(),
+            getAddress(), getHomePhone(), getMobilePhone(),
+            getWorkPhone(), getEmail(), getEmail2(), getEmail3());
+  }
 
+  public String mergeDetails() {
+
+    return asString()
+            .stream().filter((s) -> !s.equals(""))
+            .map((ContactData::clean))
+            .collect(Collectors.joining("\n"));
+  }
+
+  public static String clean(String allDetails) {
+
+    return allDetails.replaceAll("\\s", " ").replaceAll("[-()]", "");
+  }
 }

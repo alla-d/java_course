@@ -26,15 +26,15 @@ public class ContactModificationTest extends TestBase {
 
   @Test
   public void testContactModification(){
-    Set<ContactData> before = app.contact().all();
+    Contacts before = app.contact().all();
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData()
             .withId(modifiedContact.getId()).withContactName("update").withLastName("update")
             .withAddress("adres").withMobilePhone("222").withEmail("test@test.com");
     app.contact().modify(contact);
     assertEquals(app.contact().count(), before.size());
-    Set<ContactData> after = app.contact().all();
-    //assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
+    Contacts after = app.contact().all();
+    assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
       }
 
 
