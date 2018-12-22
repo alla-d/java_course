@@ -1,5 +1,6 @@
 package pl.stqa.java_course.addressbook.model;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,18 +19,28 @@ public class ContactData {
   private String group;
   private String allPhones;
   private String allEmails;
-  private String photo;
+  //private String photo;
   private String allDetails;
+  private File photo;
 
-
-  public String getPhoto() {
+  public File getPhoto() {
     return photo;
   }
 
-  public ContactData withPhoto(String photo) {
+  public ContactData withPhoto(File photo) {
     this.photo = photo;
     return this;
   }
+
+
+//  public String getPhoto() {
+//    return photo;
+//  }
+//
+//  public ContactData withPhoto(String photo) {
+//    this.photo = photo;
+//    return this;
+//  }
 
   public String getAllDetails() {
     return allDetails;
