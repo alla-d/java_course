@@ -45,7 +45,7 @@ public class ContactDataGenerator {
       saveAsCsv(contacts, new File(file));
     } else if (format.equals("xml")){
       saveAsXml(contacts, new File(file));
-    }  else if (format.equals("jsom")) {
+    }  else if (format.equals("json")) {
       saveAsJson(contacts, new File(file));
     } else {
       System.out.println("Unrecognized format " + format);
@@ -84,7 +84,7 @@ public class ContactDataGenerator {
     for (int i = 0; i < count; i++){
       contacts.add(new ContactData().withContactName(String.format("name %s", i)).withLastName(String.format("surname %s", i))
               .withAddress(String.format("address %s", i)).withHomePhone(String.format("111 %s", i))
-              .withEmail(String.format("aaa %s", i)).withGroup(String.format("[none] %s", i)));
+              .withEmail(String.format("aaa %s", i)).withGroup(String.format("[none]", i)));
     }
         return contacts;
   }

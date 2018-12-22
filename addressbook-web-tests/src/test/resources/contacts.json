@@ -1,10 +1,82 @@
-name 0;surname 0;address 0;111 0;111 0;111 0;aaa 0;bbb 0;CCC 0;[none] 0
-name 1;surname 1;address 1;111 1;111 1;111 1;aaa 1;bbb 1;CCC 1;[none] 1
-name 2;surname 2;address 2;111 2;111 2;111 2;aaa 2;bbb 2;CCC 2;[none] 2
-name 3;surname 3;address 3;111 3;111 3;111 3;aaa 3;bbb 3;CCC 3;[none] 3
-name 4;surname 4;address 4;111 4;111 4;111 4;aaa 4;bbb 4;CCC 4;[none] 4
-name 5;surname 5;address 5;111 5;111 5;111 5;aaa 5;bbb 5;CCC 5;[none] 5
-name 6;surname 6;address 6;111 6;111 6;111 6;aaa 6;bbb 6;CCC 6;[none] 6
-name 7;surname 7;address 7;111 7;111 7;111 7;aaa 7;bbb 7;CCC 7;[none] 7
-name 8;surname 8;address 8;111 8;111 8;111 8;aaa 8;bbb 8;CCC 8;[none] 8
-name 9;surname 9;address 9;111 9;111 9;111 9;aaa 9;bbb 9;CCC 9;[none] 9
+[
+  {
+    "contactName": "name 0",
+    "lastName": "surname 0",
+    "address": "address 0",
+    "homePhone": "111 0",
+    "email": "aaa 0",
+    "group": "[none]"
+  },
+  {
+    "contactName": "name 1",
+    "lastName": "surname 1",
+    "address": "address 1",
+    "homePhone": "111 1",
+    "email": "aaa 1",
+    "group": "[none]"
+  },
+  {
+    "contactName": "name 2",
+    "lastName": "surname 2",
+    "address": "address 2",
+    "homePhone": "111 2",
+    "email": "aaa 2",
+    "group": "[none]"
+  },
+  {
+    "contactName": "name 3",
+    "lastName": "surname 3",
+    "address": "address 3",
+    "homePhone": "111 3",
+    "email": "aaa 3",
+    "group": "[none]"
+  },
+  {
+    "contactName": "name 4",
+    "lastName": "surname 4",
+    "address": "address 4",
+    "homePhone": "111 4",
+    "email": "aaa 4",
+    "group": "[none]"
+  },
+  {
+    "contactName": "name 5",
+    "lastName": "surname 5",
+    "address": "address 5",
+    "homePhone": "111 5",
+    "email": "aaa 5",
+    "group": "[none]"
+  },
+  {
+    "contactName": "name 6",
+    "lastName": "surname 6",
+    "address": "address 6",
+    "homePhone": "111 6",
+    "email": "aaa 6",
+    "group": "[none]"
+  },
+  {
+    "contactName": "name 7",
+    "lastName": "surname 7",
+    "address": "address 7",
+    "homePhone": "111 7",
+    "email": "aaa 7",
+    "group": "[none]"
+  },
+  {
+    "contactName": "name 8",
+    "lastName": "surname 8",
+    "address": "address 8",
+    "homePhone": "111 8",
+    "email": "aaa 8",
+    "group": "[none]"
+  },
+  {
+    "contactName": "name 9",
+    "lastName": "surname 9",
+    "address": "address 9",
+    "homePhone": "111 9",
+    "email": "aaa 9",
+    "group": "[none]"
+  }
+]
