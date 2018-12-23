@@ -54,23 +54,21 @@ public class ContactDataGenerator {
 
   private static void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
     System.out.println(new File(".").getAbsolutePath());
-    Writer writer = new FileWriter(file);
-    for (ContactData contact : contacts){
-      writer.write(String.format("%s;%s;%s;%s;%s;%s\n", contact.getContactName(), contact.getLastName(), contact.getAddress()
-      , contact.getHomePhone(), contact.getEmail(), contact.getGroup()));
+    try (Writer writer = new FileWriter(file)) {
+      for (ContactData contact : contacts) {
+        writer.write(String.format("%s;%s;%s;%s;%s;%s\n", contact.getContactName(), contact.getLastName(), contact.getAddress()
+                , contact.getHomePhone(), contact.getEmail(), contact.getGroup()));
+      }
     }
-    writer.close();
   }
-
   private void saveAsXml (List<ContactData> contacts, File file) throws IOException {
     XStream xstream = new XStream();
     xstream.processAnnotations(ContactData.class);
     String xml = xstream.toXML(contacts);
-    Writer writer = new FileWriter(file);
-    writer.write(xml);
-    writer.close();
+    try (Writer writer = new FileWriter(file)) {
+      writer.write(xml);
+    }
   }
-
   private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
     String json = gson.toJson(contacts);
