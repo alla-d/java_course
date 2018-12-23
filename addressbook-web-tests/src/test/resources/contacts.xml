@@ -5,7 +5,7 @@
     <address>address 0</address>
     <homePhone>111 0</homePhone>
     <email>aaa 0</email>
-    <group>[none] 0</group>
+    <group>[none]</group>
   </contact>
   <contact>
     <contactName>name 1</contactName>
@@ -13,7 +13,7 @@
     <address>address 1</address>
     <homePhone>111 1</homePhone>
     <email>aaa 1</email>
-    <group>[none] 1</group>
+    <group>[none]</group>
   </contact>
   <contact>
     <contactName>name 2</contactName>
@@ -21,62 +21,6 @@
     <address>address 2</address>
     <homePhone>111 2</homePhone>
     <email>aaa 2</email>
-    <group>[none] 2</group>
-  </contact>
-  <contact>
-    <contactName>name 3</contactName>
-    <lastName>surname 3</lastName>
-    <address>address 3</address>
-    <homePhone>111 3</homePhone>
-    <email>aaa 3</email>
-    <group>[none] 3</group>
-  </contact>
-  <contact>
-    <contactName>name 4</contactName>
-    <lastName>surname 4</lastName>
-    <address>address 4</address>
-    <homePhone>111 4</homePhone>
-    <email>aaa 4</email>
-    <group>[none] 4</group>
-  </contact>
-  <contact>
-    <contactName>name 5</contactName>
-    <lastName>surname 5</lastName>
-    <address>address 5</address>
-    <homePhone>111 5</homePhone>
-    <email>aaa 5</email>
-    <group>[none] 5</group>
-  </contact>
-  <contact>
-    <contactName>name 6</contactName>
-    <lastName>surname 6</lastName>
-    <address>address 6</address>
-    <homePhone>111 6</homePhone>
-    <email>aaa 6</email>
-    <group>[none] 6</group>
-  </contact>
-  <contact>
-    <contactName>name 7</contactName>
-    <lastName>surname 7</lastName>
-    <address>address 7</address>
-    <homePhone>111 7</homePhone>
-    <email>aaa 7</email>
-    <group>[none] 7</group>
-  </contact>
-  <contact>
-    <contactName>name 8</contactName>
-    <lastName>surname 8</lastName>
-    <address>address 8</address>
-    <homePhone>111 8</homePhone>
-    <email>aaa 8</email>
-    <group>[none] 8</group>
-  </contact>
-  <contact>
-    <contactName>name 9</contactName>
-    <lastName>surname 9</lastName>
-    <address>address 9</address>
-    <homePhone>111 9</homePhone>
-    <email>aaa 9</email>
-    <group>[none] 9</group>
+    <group>[none]</group>
   </contact>
 </list>

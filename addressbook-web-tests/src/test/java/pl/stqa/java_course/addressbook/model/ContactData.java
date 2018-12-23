@@ -3,7 +3,6 @@ package pl.stqa.java_course.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
-
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
@@ -31,7 +30,7 @@ public class ContactData {
   private String email2;
   @Expose
   private String email3;
-  @Expose
+ @Expose
   private String group;
   @Expose
   private String allPhones;
@@ -39,16 +38,16 @@ public class ContactData {
   private String allEmails;
   //private String photo;
   private String allDetails;
-  private File photo;
-
-  public File getPhoto() {
-    return photo;
-  }
-
-  public ContactData withPhoto(File photo) {
-    this.photo = photo;
-    return this;
-  }
+//  private File photo;
+//
+//  public File getPhoto() {
+//    return photo;
+//  }
+//
+//  public ContactData withPhoto(String photo) {
+//    this.photo = photo;
+//    return this;
+//  }
 
 
 //  public String getPhoto() {
@@ -209,7 +208,7 @@ public class ContactData {
             ", email3='" + email3 + '\'' +
             ", allPhones='" + allPhones + '\'' +
             ", allEmails='" + allEmails + '\'' +
-            ", photo='" + photo + '\'' +
+            //", photo='" + photo + '\'' +
             ", allDetails='" + allDetails + '\'' +
             '}';
   }

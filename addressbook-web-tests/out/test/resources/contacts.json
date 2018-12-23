@@ -5,7 +5,7 @@
     "address": "address 0",
     "homePhone": "111 0",
     "email": "aaa 0",
-    "group": "[none] 0"
+    "group": "[none]"
   },
   {
     "contactName": "name 1",
@@ -13,7 +13,7 @@
     "address": "address 1",
     "homePhone": "111 1",
     "email": "aaa 1",
-    "group": "[none] 1"
+    "group": "[none]"
   },
   {
     "contactName": "name 2",
@@ -21,7 +21,7 @@
     "address": "address 2",
     "homePhone": "111 2",
     "email": "aaa 2",
-    "group": "[none] 2"
+    "group": "[none]"
   },
   {
     "contactName": "name 3",
@@ -29,7 +29,7 @@
     "address": "address 3",
     "homePhone": "111 3",
     "email": "aaa 3",
-    "group": "[none] 3"
+    "group": "[none]"
   },
   {
     "contactName": "name 4",
@@ -37,7 +37,7 @@
     "address": "address 4",
     "homePhone": "111 4",
     "email": "aaa 4",
-    "group": "[none] 4"
+    "group": "[none]"
   },
   {
     "contactName": "name 5",
@@ -45,7 +45,7 @@
     "address": "address 5",
     "homePhone": "111 5",
     "email": "aaa 5",
-    "group": "[none] 5"
+    "group": "[none]"
   },
   {
     "contactName": "name 6",
@@ -53,7 +53,7 @@
     "address": "address 6",
     "homePhone": "111 6",
     "email": "aaa 6",
-    "group": "[none] 6"
+    "group": "[none]"
   },
   {
     "contactName": "name 7",
@@ -61,7 +61,7 @@
     "address": "address 7",
     "homePhone": "111 7",
     "email": "aaa 7",
-    "group": "[none] 7"
+    "group": "[none]"
   },
   {
     "contactName": "name 8",
@@ -69,7 +69,7 @@
     "address": "address 8",
     "homePhone": "111 8",
     "email": "aaa 8",
-    "group": "[none] 8"
+    "group": "[none]"
   },
   {
     "contactName": "name 9",
@@ -77,6 +77,6 @@
     "address": "address 9",
     "homePhone": "111 9",
     "email": "aaa 9",
-    "group": "[none] 9"
+    "group": "[none]"
   }
 ]
