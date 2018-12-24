@@ -1,25 +1,24 @@
 package pl.stqa.java_course.addressbook.tests;
 
-import org.openqa.selenium.remote.BrowserType;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import pl.stqa.java_course.addressbook.appmanager.ApplicationManager;
+import org.openqa.selenium.remote.BrowserType;
 
 public class TestBase {
 
-  // Firefox
-  //protected static final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
+  //protected final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
   // CHROME
-  protected static final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
+  protected final ApplicationManager app = new ApplicationManager(System.getProperty("browser",BrowserType.CHROME));
   // IE
-  // protected static final ApplicationManager app = new ApplicationManager(BrowserType.IE);
+  // protected final ApplicationManager app = new ApplicationManager(BrowserType.IE);
 
-  @BeforeSuite
+  @BeforeMethod
   public void setUp() throws Exception {
     app.init();
   }
 
-  @AfterSuite
+  @AfterMethod
   public void tearDown() throws Exception {
     app.stop();
   }
