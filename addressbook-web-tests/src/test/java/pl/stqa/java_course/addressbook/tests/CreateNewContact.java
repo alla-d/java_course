@@ -22,7 +22,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CreateNewContact extends TestBase {
 
-  Logger logger = LoggerFactory.getLogger(CreateNewContact.class);
 /*
   @DataProvider
   public Iterator<Object[]> validContactsFromCsv() throws IOException {
@@ -75,14 +74,12 @@ public class CreateNewContact extends TestBase {
 
     @Test  (dataProvider = "validContactsFromXml")
   public void testCreateNewContactFromXml(ContactData contact) {
-      logger.info("Start test CreateNewContact");
     Contacts before = app.contact().all();
     app.contact().create(contact, true);
     assertThat(app.contact().count(), equalTo(before.size() + 1));
     Contacts after = app.contact().all();
     assertThat(after, equalTo(before.withAdded(
             contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
-      logger.info("Stop test testGroupCreation");
   }
 
 //    @Test  (dataProvider = "validContactsFromJson")
