@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pl.stqa.java_course.addressbook.model.ContactData;
 import pl.stqa.java_course.addressbook.model.Contacts;
+import pl.stqa.java_course.addressbook.model.GroupData;
 
 import java.util.Set;
 
@@ -15,21 +16,23 @@ public class ContactsDeletionTest extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions(){
-    if (app.contact().all().size() == 0){
-      app.contact().create(new ContactData().withContactName("test").withLastName("Surname")
-              .withMobilePhone("1234567").withEmail("test@test.com").withGroup("[none]"), true);
+    if (app.db().contacts().size() == 0) {
+      app.goTo().homePage();
+      app.contact().create(new ContactData()
+              .withContactName("Name").withLastName("Surname")
+              .withMobilePhone("222").withEmail("aaa")
+              .withGroup("[none]"), true);
     }
-    app.goTo().homePage();
   }
 
   @Test
   public void testContactDeletion(){
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     ContactData deleteContact = before.iterator().next();
     app.contact().delete(deleteContact);
     Assert.assertEquals(app.contact().count(), before.size() - 1);
-    Contacts after = app.contact().all();
-//    assertThat(after, equalTo(before.without(deleteContact)));
+    Contacts after = app.db().contacts();
+    assertThat(after, equalTo(before.without(deleteContact)));
   }
 
 

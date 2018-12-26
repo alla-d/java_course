@@ -58,7 +58,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void modify(ContactData contact) {
-    editContactById(contact.getId());
+    selectContactById(contact.getId());
     fillContactForm(contact, false);
     submitContactModification();
     contactCache = null;
@@ -78,12 +78,12 @@ public class ContactHelper extends HelperBase {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
-  public void selectContactById(int id) {
-    WebElement table = wd.findElement(By.xpath("//*[@id=\"maintable\"]"));
-    WebElement row = table.findElement(By.xpath("//tr/td/*[@id='"+id+"']"));
-    row.findElement(By.xpath("//td[8]/a/img")).click();
-  //  wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
-  }
+//  public void selectContactById(int id) {
+//    WebElement table = wd.findElement(By.xpath("//*[@id=\"maintable\"]"));
+//    WebElement row = table.findElement(By.xpath("//tr/td/*[@id='"+id+"']"));
+//    row.findElement(By.xpath("//td[8]/a/img")).click();
+//  //  wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+//  }
 
   private void selectDetailsById(int id) {
     wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", id))).click();
@@ -96,7 +96,7 @@ public class ContactHelper extends HelperBase {
     wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
   }
 
-  public void editContactById(int id) {
+  public void selectContactById(int id) {
 
     wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
   }
@@ -158,7 +158,7 @@ public class ContactHelper extends HelperBase {
  }
 
   public ContactData infoFromEditForm(ContactData contact) {
-    editContactById(contact.getId());
+    selectContactById(contact.getId());
     String name = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
     String home = wd.findElement(By.name("home")).getAttribute("value");
