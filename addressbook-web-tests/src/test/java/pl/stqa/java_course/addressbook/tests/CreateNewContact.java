@@ -9,6 +9,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pl.stqa.java_course.addressbook.model.ContactData;
 import pl.stqa.java_course.addressbook.model.Contacts;
+import pl.stqa.java_course.addressbook.model.Groups;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -72,25 +74,27 @@ public class CreateNewContact extends TestBase {
      }
   }
 
-    @Test  (dataProvider = "validContactsFromXml")
-  public void testCreateNewContactFromXml(ContactData contact) {
-    Contacts before = app.db().contacts();
-    app.contact().create(contact, true);
-    assertThat(app.contact().count(), equalTo(before.size() + 1));
-    Contacts after = app.db().contacts();
-    assertThat(after, equalTo(before.withAdded(
-            contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
-  }
-
-//    @Test  (dataProvider = "validContactsFromJson")
-//  public void testCreateNewContactFromJson(ContactData contact) {
-//    Contacts before = app.contact().all();
-//    app.contact().create((contact), true);
+//    @Test  (dataProvider = "validContactsFromXml")
+//  public void testCreateNewContactFromXml(ContactData contact) {
+//    Contacts before = app.db().contacts();
+//    app.contact().create(contact, true);
 //    assertThat(app.contact().count(), equalTo(before.size() + 1));
-//    Contacts after = app.contact().all();
+//    Contacts after = app.db().contacts();
 //    assertThat(after, equalTo(before.withAdded(
 //            contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
 //  }
+
+    @Test  (dataProvider = "validContactsFromJson")
+  public void testCreateNewContactFromJson(ContactData contact) {
+    Groups groups = app.db().groups();
+    Contacts before = app.db().contacts();
+    app.contact().create((contact), true);
+    assertThat(app.contact().count(), equalTo(before.size() + 1));
+    Contacts after = app.contact().all();
+    assertThat(after, equalTo(before.withAdded(
+            contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+      verifyContactListInUI();
+  }
 
  /* @Test(dataProvider = "validContactsFromCsv")
   public void testCreateNewContactFromCsv(ContactData contact) {

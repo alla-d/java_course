@@ -20,8 +20,7 @@ public class ContactsDeletionTest extends TestBase {
       app.goTo().homePage();
       app.contact().create(new ContactData()
               .withContactName("Name").withLastName("Surname")
-              .withMobilePhone("222").withEmail("aaa")
-              .withGroup("[none]"), true);
+              .withMobilePhone("222").withEmail("aaa"), true);
     }
   }
 
@@ -33,6 +32,7 @@ public class ContactsDeletionTest extends TestBase {
     Assert.assertEquals(app.contact().count(), before.size() - 1);
     Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.without(deleteContact)));
+    verifyContactListInUI();
   }
 
 

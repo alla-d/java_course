@@ -3,12 +3,15 @@ package pl.stqa.java_course.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @XStreamAlias("contact")
@@ -63,9 +66,9 @@ public class ContactData {
   @Type(type="text")
   private String email3;
 
- @Expose
- @Transient
-  private String group;
+// @Expose
+// @Transient
+//  private String group;
 
   @Expose
   @Transient
@@ -79,6 +82,11 @@ public class ContactData {
   //private String photo;
   @Transient
   private String allDetails;
+
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "address_in_groups",
+          joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
 //  private File photo;
 //
 //  public File getPhoto() {
@@ -185,10 +193,10 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withGroup(String group) {
-    this.group = group;
-    return this;
-  }
+//  public ContactData withGroup(String group) {
+//    this.group = group;
+//    return this;
+//  }
 
   public int getId() {
     return id;
@@ -230,9 +238,13 @@ public class ContactData {
     return email3;
   }
 
-  public String getGroup() {
-    return group;
+  public Groups getGroups() {
+    return new Groups(groups);
   }
+
+//  public String getGroup() {
+//    return group;
+//  }
 
   @Override
   public String toString() {

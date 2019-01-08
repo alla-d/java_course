@@ -19,7 +19,7 @@ public class ContactDetailsTest extends TestBase {
       app.contact().create(new ContactData()
               .withContactName("name").withLastName("surname")
               .withAddress("address").withHomePhone("111").withWorkPhone("333").withMobilePhone("222")
-              .withEmail("aaa").withGroup("[none]"), true);
+              .withEmail("aaa"), true);
     }
     app.goTo().homePage();
   }
