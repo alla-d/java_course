@@ -7,7 +7,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import pl.stqa.java_course.addressbook.model.ContactData;
 import pl.stqa.java_course.addressbook.model.Contacts;
+import pl.stqa.java_course.addressbook.model.GroupData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,7 +26,7 @@ public class ContactHelper extends HelperBase {
   public void fillContactForm(ContactData ContactData, boolean creation) {
     type(By.name("firstname"), ContactData.getContactName());
     type(By.name("lastname"), ContactData.getLastName());
-    //attach(By.name("photo"), ContactData.getPhoto());
+    attach(By.name("photo"), ContactData.getPhoto());
     type(By.name("address"), ContactData.getAddress());
     type(By.name("home"), ContactData.getHomePhone());
     type(By.name("mobile"), ContactData.getMobilePhone());
@@ -176,6 +178,36 @@ public class ContactHelper extends HelperBase {
             .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withAddress(address)
             .withEmail(email).withEmail2(email2).withEmail3(email3)
            ;
+  }
+  public int selectContactAndReturnID(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
+    return Integer.parseInt(wd.findElements(By.name("selected[]")).get(index).getAttribute("id"));
+  }
+
+  public List<GroupData> groupList() {
+    List<GroupData> groups = new ArrayList<GroupData>();
+    List<WebElement> elements = wd.findElements(By.xpath("//*[@id=\"content\"]/form[2]/div[4]/select/option"));
+    for (WebElement element : elements) {
+      String name = element.getText();
+      int id = Integer.parseInt(element.getAttribute("value"));
+      GroupData group = new GroupData().withId(id).withName(name);
+      groups.add(group);
+    }
+    return groups;
+  }
+
+
+  public void click(By locator) {
+    wd.findElement(locator).click();
+  }
+
+
+  public void selectGroupAdd(String name) {
+    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(name);
+  }
+
+  public void selectGroupRemove(String name) {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(name);
   }
 
   private void initContactModificationById(int id) {

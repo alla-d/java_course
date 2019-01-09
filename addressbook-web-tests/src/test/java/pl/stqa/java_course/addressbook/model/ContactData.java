@@ -3,7 +3,6 @@ package pl.stqa.java_course.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
-import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -77,9 +76,11 @@ public class ContactData {
   @Expose
   @Transient
   private String allEmails;
-  // @Column (name = "photo")
-  // @Type(type="text")
-  //private String photo;
+
+  @Column (name = "photo")
+  @Type(type="text")
+  private String photo;
+
   @Transient
   private String allDetails;
 
@@ -87,26 +88,16 @@ public class ContactData {
   @JoinTable(name = "address_in_groups",
           joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
   private Set<GroupData> groups = new HashSet<GroupData>();
-//  private File photo;
-//
-//  public File getPhoto() {
-//    return new File (photo);
-//  }
-//
-//  public ContactData withPhoto(String photo) {
-//    this.photo = photo.getPath;
-//    return this;
-//  }
+  //private File photo;
 
+  public File getPhoto() {
+    return new File (photo);
+  }
 
-//  public String getPhoto() {
-//    return photo;
-//  }
-//
-//  public ContactData withPhoto(String photo) {
-//    this.photo = photo;
-//    return this;
-//  }
+  public ContactData withPhoto(File photo) {
+    this.photo = photo.getPath();
+    return this;
+  }
 
   public String getAllDetails() {
     return allDetails;
@@ -301,5 +292,10 @@ public class ContactData {
   public static String clean(String allDetails) {
 
     return allDetails.replaceAll("\\s", " ").replaceAll("[-()]", "");
+  }
+
+  public ContactData inGroup(GroupData group){
+    groups.add(group);
+    return this;
   }
 }

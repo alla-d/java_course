@@ -26,7 +26,7 @@ public class TestBase {
 
   //protected final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
   // CHROME
-  protected final ApplicationManager app = new ApplicationManager(System.getProperty("browser",BrowserType.CHROME));
+  protected final ApplicationManager app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
   // IE
   // protected final ApplicationManager app = new ApplicationManager(BrowserType.IE);
 
@@ -40,19 +40,19 @@ public class TestBase {
     app.stop();
   }
 
-  @BeforeMethod (alwaysRun = false)
-  public void logTestStart(Method m, Object[] p){
+  @BeforeMethod(alwaysRun = false)
+  public void logTestStart(Method m, Object[] p) {
     logger.info("Start test " + m.getName() + "with paramiters " + Arrays.asList(p));
   }
 
-  @AfterMethod (alwaysRun = false)
-  public void LogTestStop(Method m, Object[] p){
+  @AfterMethod(alwaysRun = false)
+  public void LogTestStop(Method m, Object[] p) {
     logger.info("Stop test " + m.getName() + "with paramiters " + Arrays.asList(p));
 
   }
 
   public void verifyGroupListInUi() {
-    if(Boolean.getBoolean("veryfyUI")){
+    if (Boolean.getBoolean("verifyUI")) {
       Groups dbGroups = app.db().groups();
       Groups uiGroups = app.group().all();
       assertThat(uiGroups, equalTo(dbGroups.stream()
@@ -62,7 +62,6 @@ public class TestBase {
   }
 
   public void verifyContactListInUI() {
-    // get system property
     if (Boolean.getBoolean("verifyUI")) {
       Contacts dbContacts = app.db().contacts();
       Contacts uiContacts = app.contact().all();

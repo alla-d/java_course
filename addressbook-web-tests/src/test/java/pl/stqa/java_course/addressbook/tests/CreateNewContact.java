@@ -5,12 +5,13 @@ import com.google.gson.Gson;
 import com.thoughtworks.xstream.XStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pl.stqa.java_course.addressbook.model.ContactData;
 import pl.stqa.java_course.addressbook.model.Contacts;
+import pl.stqa.java_course.addressbook.model.GroupData;
 import pl.stqa.java_course.addressbook.model.Groups;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -23,6 +24,14 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CreateNewContact extends TestBase {
+
+  @BeforeMethod
+  public void ensurePreconditions(){
+    if (app.db().groups().size()==0){
+      app.goTo().groupPage();
+      app.group().create(new GroupData().withName("test1"));
+    }
+  }
 
 /*
   @DataProvider
@@ -60,7 +69,7 @@ public class CreateNewContact extends TestBase {
 
   @DataProvider
   public Iterator<Object[]> validContactsFromJson() throws IOException {
-     try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")))) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")))) {
       String json = "";
       String line = reader.readLine();
       while (line != null) {
@@ -71,7 +80,7 @@ public class CreateNewContact extends TestBase {
       List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>() {
       }.getType());
       return contacts.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
-     }
+    }
   }
 
 //    @Test  (dataProvider = "validContactsFromXml")
@@ -84,25 +93,28 @@ public class CreateNewContact extends TestBase {
 //            contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
 //  }
 
-    @Test  (dataProvider = "validContactsFromJson")
+  @Test(dataProvider = "validContactsFromJson")
   public void testCreateNewContactFromJson(ContactData contact) {
     Groups groups = app.db().groups();
+    app.goTo().homePage();
     Contacts before = app.db().contacts();
+    File photo = new File("src/test/resources/test.png");
+    contact.withPhoto(photo).inGroup(groups.iterator().next());
     app.contact().create((contact), true);
     assertThat(app.contact().count(), equalTo(before.size() + 1));
     Contacts after = app.contact().all();
     assertThat(after, equalTo(before.withAdded(
             contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
-      verifyContactListInUI();
+    verifyContactListInUI();
   }
 
  /* @Test(dataProvider = "validContactsFromCsv")
   public void testCreateNewContactFromCsv(ContactData contact) {
     Contacts before = app.contact().all();
-    // File photo = new File("src/test/resources/test.png");
+// File photo = new File("src/test/resources/test.png");
 //    ContactData contact = new ContactData().withContactName("photo").withLastName("surname")
-//            .withAddress("address").withHomePhone("111").withWorkPhone("333").withMobilePhone("222").
-//                    withEmail("aaa").withEmail2("bbb").withEmail3("ccc").withGroup("[none]").withPhoto(photo);
+//            .withAddress("address").withHomePhone("111").withWorkPhone("333").withMobilePhone("222")
+//            .withEmail("aaa").withEmail2("bbb").withEmail3("ccc").withGroup("[none]").withPhoto(photo);
     app.contact().create((contact), true);
     assertThat(app.contact().count(), equalTo(before.size() + 1));
     Contacts after = app.contact().all();
