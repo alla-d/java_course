@@ -9,11 +9,11 @@ public class Point {
     this.x = x;
     this.y = y;
   }
-
-  public static double distance(Point p1, Point p2) {
-    double dist = Math.sqrt(Math.pow(p1.x - p2.x, 2.0) + Math.pow(p1.y - p2.y, 2.0));
-    return dist;
-  }
+// commit because of feedback
+//  public static double distance(Point p1, Point p2) {
+//    double dist = Math.sqrt(Math.pow(p1.x - p2.x, 2.0) + Math.pow(p1.y - p2.y, 2.0));
+//    return dist;
+//  }
 
 
   public double distance2(Point p2) {

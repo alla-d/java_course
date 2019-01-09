@@ -15,11 +15,12 @@ public class PointTest {
   }
 
   // test for the function
-  @Test
-  public void distanceNotTrue() {
-    Point p1 = new Point(5.5, 7.9);
-    Point p2 = new Point(3.2, 5.3);
-    Assert.assertNotEquals(Point.distance(p1, p2), 5.4713109915419564);
-  }
+  // commit because of feedback
+//  @Test
+//  public void distanceNotTrue() {
+//    Point p1 = new Point(5.5, 7.9);
+//    Point p2 = new Point(3.2, 5.3);
+//    Assert.assertNotEquals(Point.distance(p1, p2), 5.4713109915419564);
+//  }
 
 }
