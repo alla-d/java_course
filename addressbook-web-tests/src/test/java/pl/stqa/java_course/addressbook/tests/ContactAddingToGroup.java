@@ -48,7 +48,7 @@ public class ContactAddingToGroup extends TestBase {
 
     if(available.size()>0){
       app.contact().selectGroupAdd(available.get(0).getName());
-      app.contact().click(By.name("add"));
+      app.contact().addGroup();
       assertThat(app.db().getContact(contact.getId()).getGroups(),
               equalTo(contact.getGroups().withAdded(available.get(0))));
     }

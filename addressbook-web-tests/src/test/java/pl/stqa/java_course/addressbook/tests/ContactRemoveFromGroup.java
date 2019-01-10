@@ -60,7 +60,7 @@ public class ContactRemoveFromGroup extends TestBase {
         app.contact().selectGroupRemove(selectedGroup.getName());
         Integer id = app.contact().selectContactAndReturnID(0);
         ContactData contact = app.db().getContact(id);
-        app.contact().click(By.name("remove"));
+        app.contact().removeGroup();
         app.goTo().homePage();
         Set<GroupData> after = contact.getGroups();
         after.remove(selectedGroup);
