@@ -40,7 +40,7 @@ public class ContactRemoveFromGroup extends TestBase {
       }
 
       if (condition == false) {
-        app.contact().create(new ContactData().withContactName("Joanna").withLastName("Test").inGroup(list.get(0)), true);
+        app.contact().create(new ContactData().withContactName("TestName").withLastName("Test").inGroup(list.get(0)), true);
       }
     }
   }
