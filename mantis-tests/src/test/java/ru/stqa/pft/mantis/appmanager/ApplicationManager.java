@@ -12,7 +12,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.MatchResult;
 
 
 public class ApplicationManager {
@@ -23,6 +22,7 @@ public class ApplicationManager {
   private RegistrationHelper registrationHelper;
   private FtpHelper ftp;
   private MailHelper mailHelper;
+  private ChangePasswordHelper loginHelper;
 
 
   public ApplicationManager(String browser) {
@@ -83,4 +83,10 @@ public class ApplicationManager {
     return mailHelper;
   }
 
+  public ChangePasswordHelper change() {
+    if (loginHelper == null) {
+      loginHelper = new ChangePasswordHelper(this);
+    }
+    return loginHelper;
+  }
 }
