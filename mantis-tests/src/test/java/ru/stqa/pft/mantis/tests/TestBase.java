@@ -32,12 +32,17 @@ public class TestBase {
     app.ftp().restore("config_inc.php.bak", "config_inc.php");
     app.stop();
   }
-  public void skipIfNotFixed(int issueId) throws RemoteException, ServiceException, MalformedURLException {
-    if (app.soap().isIssueOpen(issueId) == true) {
-      throw new SkipException("Ignored because of issue " + issueId);
-    } else {
-      System.out.println("TEst started");
-    }
-  }
+//  public void skipIfNotFixed(int issueId) throws RemoteException, ServiceException, MalformedURLException {
+//    if (app.soap().isIssueOpen(issueId)) {
+//      throw new SkipException("Ignored because of issue " + issueId);
+//    }
+//  }
+//  public void skipIfNotFixed(int issueId) throws RemoteException, ServiceException, MalformedURLException {
+//    if (app.soap().isIssueOpen(issueId) == true) {
+//      throw new SkipException("Ignored because of issue " + issueId);
+//    } else {
+//      System.out.println("TEst started");
+//    }
+//  }
 
  }

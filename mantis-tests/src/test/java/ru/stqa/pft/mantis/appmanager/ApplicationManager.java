@@ -24,7 +24,7 @@ public class ApplicationManager {
   private MailHelper mailHelper;
   private ChangePasswordHelper loginHelper;
   private SoapHelper soapHelper;
-  private JamesHelper jamesHelper;
+  //private JamesHelper jamesHelper;
 
 
 
@@ -93,12 +93,12 @@ public class ApplicationManager {
     return loginHelper;
   }
 
-  public JamesHelper james() {
-    if (jamesHelper == null) {
-      jamesHelper = new JamesHelper(this);
-    }
-    return jamesHelper;
-  }
+//  public JamesHelper james() {
+//    if (jamesHelper == null) {
+//      jamesHelper = new JamesHelper(this);
+//    }
+//    return jamesHelper;
+//  }
 
 
   public SoapHelper soap() {
