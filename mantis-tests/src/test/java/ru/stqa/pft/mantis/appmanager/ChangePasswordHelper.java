@@ -1,13 +1,7 @@
 package ru.stqa.pft.mantis.appmanager;
 
   import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-//import org.openqa.selenium.WebElement;
-import java.util.List;
 
-  /**
-   * Created by yana on 4/11/2016.
-   */
   public class ChangePasswordHelper extends HelperBase {
 
     public ChangePasswordHelper(ApplicationManager app){

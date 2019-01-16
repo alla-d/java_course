@@ -8,6 +8,10 @@ import ru.stqa.pft.mantis.appmanager.ApplicationManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.rmi.RemoteException;
+import java.net.MalformedURLException;
+import org.testng.SkipException;
+import javax.xml.rpc.ServiceException;
 
 public class TestBase {
 
@@ -28,5 +32,12 @@ public class TestBase {
     app.ftp().restore("config_inc.php.bak", "config_inc.php");
     app.stop();
   }
+  public void skipIfNotFixed(int issueId) throws RemoteException, ServiceException, MalformedURLException {
+    if (app.soap().isIssueOpen(issueId) == true) {
+      throw new SkipException("Ignored because of issue " + issueId);
+    } else {
+      System.out.println("TEst started");
+    }
+  }
 
-}
+ }
